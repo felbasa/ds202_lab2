@@ -1,30 +1,43 @@
 ---
-title: "individual1"
+title: "Individual 1"
 author: "Felix Baez-Santiago"
 date: "2/15/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+#importing dataset from web scrap
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv")
+str(choco)
+```
+# Question 1.1 
+How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
+```{r}
+hist(choco$Rating)
+boxplot(choco$Rating)
+```
+The rating distribution is bimodal, left skewed, most of the data is in between 2.5 and 4.0 with an extreme gap in the the middle and there are at least 4 outliers present. 
+
+# Question 1.2
+How does the number of ratings depend on the location of the company? Draw a bar chart of the number of reports.
+```{r}
+?barplot
+#barplot(data = choco, height = choco$Rating[choco$Location])
+```
+# Question 1.3
+Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]
+```{r}
+
 ```
 
-## R Markdown
+# Question 1.4
+How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.
+```{r}
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
+# Question 1.5
+Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
+```{r}
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
