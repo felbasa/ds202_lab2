@@ -1,0 +1,57 @@
+---
+title: 'Homework #1'
+author: "Austin Nebel"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Visualizing the Ratings
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco)
+```
+
+```{r}
+boxplot(choco$Rating)
+hist(choco$Rating)
+```
+The ratings seem to generally lean towards the high side of the scale. Based off of the box plot, almost 70% of the chocolates are rated at over 3.0/5.0 and there are only a few outliers near the lower end of the scale. From the histogram it can be clearly seen that almost all chocolates received a rating of over 2.5.
+
+## Ratings and Locations
+
+```{r}
+counts <- table(choco$Rating, choco$Location)
+barplot(counts, las=2, cex.names=0.4)
+```
+
+The amount of ratings are definitely dependant on location. As seen it the bar graph above, the U.S.A has the highest amount ratings and all other locations are much lower.
+
+## Ratings and Cocoa Percentage
+
+```{r}
+pr <- choco[,c("Cocoa_Percent", "Rating")]
+summary(pr)
+percent_by_rating <- pr$Cocoa_Percent ~ pr$Rating
+boxplot(percent_by_rating)
+```
+
+The boxplot shows the range of percents of chocoa for each rating of chocolate. Interestingly, the highest scoring chocolates had a very small range of percentages of chocoa and where overall much lower percentages compared to the worst rated chocolates. However, the average percentages of cocoa are very close accross all chocolates; they are almost all within 70-75% range of cocoa. From this, it appears that the amount of chocoa does influence the ratings due to the highest rated chocolates all being within a very similar, small range.
+
+## Bean Origins and Flavor
+
+```{r}
+or <- choco[,c("Bean_Origin", "Rating")]
+table(or)
+
+origin_counts <- table(choco$Rating, choco$Bean_Origin)
+barplot(origin_counts, las=2, cex.names=0.45)
+
+origin_by_rating <-  or$Rating ~ or$Bean_Origin
+boxplot(origin_by_rating, las=2, cex.axis=0.45)
+```
+
+From the boxplot above it can be seen that overall the quality of chocolates are very consistent across all bean harvesting locations.
