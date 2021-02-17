@@ -41,6 +41,7 @@ analyzeCharacteristic <- function(targetCharacteristic) {
 }
 ```
 
+
 # Question 1.5
 Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
 ```{r}
