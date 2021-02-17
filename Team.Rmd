@@ -1,0 +1,56 @@
+---
+title: "Team Report"
+author: "Felix Baez-Santiago, Chris Anderson, Austin Nebel"
+date: "2/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#importing dataset from web scrap
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv")
+str(choco)
+```
+# Question 1.1 
+How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
+```{r}
+hist(choco$Rating, main='Distribution of Ratings', xlab='Rating')
+boxplot(choco$Rating, main='Distribution of Ratings')
+```
+The rating distribution is bimodal, left skewed, most of the data is in between 2.5 and 4.0 with an extreme gap in the the middle and there are at least 4 outliers present. 
+
+# Question 1.2
+How does the number of ratings depend on the location of the company? Draw a bar chart of the number of reports.
+```{r}
+barplot(table(choco$Location), main='Number of Ratings by Location', xlab='Year', ylab='Count', las  = 2)
+# text(x = table(choco$location), labels = names(choco$location), srt = 45, xpd = Na)
+```
+# Question 1.3
+Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]
+```{r}
+cor(choco$Rating, choco$Cocoa_Percent)
+plot(choco$Rating, choco$Cocoa_Percent, main='Scatter Plot of Cocoa Percentage and Rating', xlab='Rating', ylab='Cocoa Percent')
+```
+
+# Question 1.4
+How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.
+```{r}
+or <- choco[,c("Bean_Origin", "Rating")]
+table(or)
+
+origin_counts <- table(choco$Rating, choco$Bean_Origin)
+barplot(origin_counts, las=2, cex.names=0.45)
+
+origin_by_rating <-  or$Rating ~ or$Bean_Origin
+boxplot(origin_by_rating, las=2, cex.axis=0.45)
+```
+
+
+# Question 1.5
+Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
+```{r}
+
+```
