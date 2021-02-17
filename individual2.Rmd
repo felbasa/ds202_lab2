@@ -1,0 +1,32 @@
+---
+title: "lab2"
+author: "Chris Anderson"
+date: "2/15/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco) 
+
+#1.
+```{r}
+#boxplot(choco$Rating)
+#hist(choco$Rating)
+```
+# There are 4 outliers, all much lower than the average.
+
+#2.
+```{r}
+#num_of_rating -> count
+#barplot(height = (choco$Rating), names = (choco$Location))
+```
+#there is no measure to find number of ratings in this data set.
+
+#3.
+```{r}
+#hist(choco$Cocoa_Percent, choco$Rating, breaks=5)
+```
