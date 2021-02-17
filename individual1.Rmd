@@ -21,24 +21,28 @@ The rating distribution is bimodal, left skewed, most of the data is in between 
 # Question 1.2
 How does the number of ratings depend on the location of the company? Draw a bar chart of the number of reports.
 ```{r}
-barplot(table(choco$Location), main='Number of Ratings by Location', xlab='Year', ylab='Count')
+barplot(table(choco$Location), main='Number of Ratings by Location', xlab='Year', ylab='Count', las  = 2)
 # text(x = table(choco$location), labels = names(choco$location), srt = 45, xpd = Na)
 ```
 # Question 1.3
 Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]
 ```{r}
-plot(choco$Rating, choco$Cocoa_Percent, main='Scatter Plot of Cocoa Percentage and Rating', xlab='Rating', ylab='Cocoa Percent')
 cor(choco$Rating, choco$Cocoa_Percent)
+plot(choco$Rating, choco$Cocoa_Percent, main='Scatter Plot of Cocoa Percentage and Rating', xlab='Rating', ylab='Cocoa Percent')
 ```
 
 # Question 1.4
 How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.
-```{r}
-
+```{r analyzechars, dependson = "load", include = FALSE}
+analyzeCharacteristic <- function(targetCharacteristic) {
+  rows <- choco[choco[, targetCharacteristic], ]
+  barplot(table(rows[, targetCharacteristic], rows[, 'Rating']),  main = targetCharacteristic)
+  print(summary(rows[, 'Rating']))
+}
 ```
 
 # Question 1.5
 Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
 ```{r}
-
+names(choco)
 ```
