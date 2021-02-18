@@ -52,5 +52,8 @@ boxplot(origin_by_rating, las=2, cex.axis=0.45)
 # Question 1.5
 Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
 ```{r}
-
+# Analysis 1: How are cocoa beans that originate in the US rated?
+rows <- choco[choco$Bean_Origin == "U.S.A.", ]
+barplot(table(rows[, "Bean_Origin"], rows[, "Rating"] ), main = "Cocoa Beans from the U.S.")
+print(summary(rows[, "Rating"]))
 ```
