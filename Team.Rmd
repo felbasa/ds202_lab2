@@ -52,8 +52,17 @@ boxplot(origin_by_rating, las=2, cex.axis=0.45)
 # Question 1.5
 Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
 ```{r}
-# Analysis 1: How are cocoa beans that originate in the US rated?
+# Analysis 1: How are cocoa beans rated based on origin?
 rows <- choco[choco$Bean_Origin == "U.S.A.", ]
 barplot(table(rows[, "Bean_Origin"], rows[, "Rating"] ), main = "Cocoa Beans from the U.S.")
 print(summary(rows[, "Rating"]))
+
+rows2 <- choco[choco$Bean_Origin == "Colombia", ]
+barplot(table(rows2[, "Bean_Origin"], rows2[, "Rating"] ), main = "Cocoa Beans from Colombia")
+print(summary(rows2[, "Rating"]))
+
+rows3 <- choco[choco$Bean_Origin == "Ghana", ]
+barplot(table(rows3[, "Bean_Origin"], rows3[, "Rating"] ), main = "Cocoa Beans from Ghana")
+print(summary(rows3[, "Rating"]))
 ```
+We compared different bean origins based on rating. Out of these 3 countries we found that Colombia exports the most cocoa beans. The US seems to produce high quality chocolates as it has many rated in a range of 3 and 3.75. There seems to be an association between producing more chocolates and having a higher rating.
