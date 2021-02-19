@@ -90,4 +90,4 @@ origin_by_rating <-  yr$Rating ~ yr$Date
 boxplot(origin_by_rating, cex.axis=0.65)
 ```
 
-From the first box plot it can be seen that the rating of 3 was the used throughout a large portion of the years that chocolates were rated. The second box plot tells us that for each year the ratings almost always had an average that was either 3.0 or 3.25, telling us that most years were very similar in their chocolate ratings. However, in the second box plot the 4 highest ratings (3.25-4) had the majority of their ratings between the years of 2012 and 2016, which suggest that those were the years that scored the highest in chocolate.
+From the first box plot, it can be seen that the rating of 3 was the used throughout a large portion of the years that chocolates were rated. The second box plot tells us that for each year the ratings almost always had an average that was either 3.0 or 3.25, telling us that most years were very similar in their chocolate ratings. However, in the second box plot the 4 highest ratings (3.25-4) had the majority of their ratings between the years of 2012 and 2016, which suggest that those were the years that scored the highest in chocolate.
