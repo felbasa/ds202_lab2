@@ -29,7 +29,7 @@ barplot(table(choco$Location), main='Number of Ratings by Location', xlab='Year'
 # text(x = table(choco$location), labels = names(choco$location), srt = 45, xpd = Na)
 ```
 # Question 1.3
-Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]
+Do ratings depend on the cocoa percentage of a chocolate bar? Create both numerical and graphical summaries, and explain. [Hint: Think about why the scatterplot is not a very good choice for visualization here.]
 ```{r}
 cor(choco$Rating, choco$Cocoa_Percent)
 plot(choco$Rating, choco$Cocoa_Percent, main='Scatter Plot of Cocoa Percentage and Rating', xlab='Rating', ylab='Cocoa Percent')
@@ -51,8 +51,9 @@ boxplot(origin_by_rating, las=2, cex.axis=0.45)
 
 # Question 1.5
 Brainstorm two analyses you would like to perform (with your teammates). Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
+
+### # Analysis 1: How are cocoa beans rated based on origin?
 ```{r}
-# Analysis 1: How are cocoa beans rated based on origin?
 rows <- choco[choco$Bean_Origin == "U.S.A.", ]
 barplot(table(rows[, "Bean_Origin"], rows[, "Rating"] ), main = "Cocoa Beans from the U.S.")
 print(summary(rows[, "Rating"]))
@@ -66,3 +67,24 @@ barplot(table(rows3[, "Bean_Origin"], rows3[, "Rating"] ), main = "Cocoa Beans f
 print(summary(rows3[, "Rating"]))
 ```
 We compared different bean origins based on rating. Out of these 3 countries we found that Colombia exports the most cocoa beans. The US seems to produce high quality chocolates as it has many rated in a range of 3 and 3.75. There seems to be an association between producing more chocolates and having a higher rating.
+
+### Analysis 2: What years had the highest-rated chocolate?
+First, lets check the amount of ratings per year.
+```{r}
+yr <- choco[,c("Date", "Rating")]
+
+year_counts <- table(choco$Rating, choco$Date)
+table(yr)
+barplot(year_counts, cex.names=0.65, beside=TRUE)
+```
+
+Next, lets look at 2 box plots; the first is shows how each rating is dispersed across all years, and the second shows all of the ratings for each year.
+```{r}
+origin_by_rating <-  yr$Date ~ yr$Rating
+boxplot(origin_by_rating, cex.axis=0.65)
+
+origin_by_rating <-  yr$Rating ~ yr$Date
+boxplot(origin_by_rating, cex.axis=0.65)
+```
+
+From the first box plot it can be seen that the rating of 3 was the used throughout a large portion of the years that chocolates were rated. The second box plot tells us that for each year the ratings almost always had an average that was either 3.0 or 3.25, telling us that most years were very similar in their chocolate ratings. However, in the second box plot the 4 highest ratings (3.25-4) had the majority of their ratings between the years of 2012 and 2016, which suggest that those were the years that scored the highest in chocolate.
