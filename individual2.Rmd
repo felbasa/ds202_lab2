@@ -9,24 +9,37 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
 choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
 str(choco) 
+```
 
 #1.
 ```{r}
-#boxplot(choco$Rating)
-#hist(choco$Rating)
+boxplot(choco$Rating)
+hist(choco$Rating)
 ```
 # There are 4 outliers, all much lower than the average.
 
 #2.
 ```{r}
-#num_of_rating -> count
-#barplot(height = (choco$Rating), names = (choco$Location))
+barplot(table(choco$Location), main='Number of Ratings by Location', xlab='Year', ylab='Count', las  = 2)
 ```
 #there is no measure to find number of ratings in this data set.
 
 #3.
 ```{r}
-#hist(choco$Cocoa_Percent, choco$Rating, breaks=5)
+cor(choco$Rating, choco$Cocoa_Percent)
+plot(choco$Rating, choco$Cocoa_Percent, main='Scatter Plot of Cocoa Percentage and Rating', xlab='Rating', ylab='Cocoa Percent')
+
 ```
+
+#4
+
+```{r}
+analyzeCharacteristic <- function(targetCharacteristic) 
+  rows <- choco[choco[, targetCharacteristic], ]
+  barplot(table(rows[, targetCharacteristic], rows[, 'Rating']),  main = targetCharacteristic)
+  print(summary(rows[, 'Rating']))
+```
+#5
