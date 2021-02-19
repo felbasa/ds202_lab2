@@ -34,6 +34,7 @@ Do ratings depend on the cocoa percentage of a chocolate bar? Create both numeri
 cor(choco$Rating, choco$Cocoa_Percent)
 plot(choco$Rating, choco$Cocoa_Percent, main='Scatter Plot of Cocoa Percentage and Rating', xlab='Rating', ylab='Cocoa Percent')
 ```
+A scatterplot is definetely not the best idea here as we see that we're getting something more along the lines of a dot plot and not really seeing how chocolates are distributed over rating and cocoa percent.
 
 # Question 1.4
 How do different bean origins compare in terms of the flavor of chocolates? Are beans from some places better than the other? Create both numerical and graphical summaries, and explain.
@@ -47,6 +48,8 @@ barplot(origin_counts, las=2, cex.names=0.45)
 origin_by_rating <-  or$Rating ~ or$Bean_Origin
 boxplot(origin_by_rating, las=2, cex.axis=0.45)
 ```
+Here we can see that the beans from some places are better in quality than some. We see that the US has the most highly rated chocolates while there are several countries with worse ratings.
+
 
 
 # Question 1.5
